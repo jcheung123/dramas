@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+
 import styles from '../styles/Gallery.module.css';
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -14,7 +15,6 @@ export default function Gallery() {
         getPhotos()
     },[])
 
-    // infinite scroll functionality
     const getPhotos = () => {
         const url = "https://api.unsplash.com"
         const key = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
