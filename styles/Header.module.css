@@ -1,8 +1,8 @@
 .header {
     text-align: center;
-    padding: 20px;
-    margin: 3rem auto 6rem;
-    color: #0070f3;
+    padding: 10px;
+    margin: 2rem auto 4rem;
     font-size: 2.5rem;
-    background-color: rgb(241, 240, 240);
+    color: #eeebeb;
+    background-color: rgb(119, 128, 212);
 }
