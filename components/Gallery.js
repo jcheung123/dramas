@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import styles from '../styles/Gallery.module.css';
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -35,7 +36,8 @@ export default function Gallery() {
                 >
                     <Masonry gutter="30px">
                         {photos.map((photo) => (
-                            <img
+                            <LazyLoadImage
+                                effect="blur"
                                 className={styles.image}
                                 src={photo.urls.regular}
                                 key={photo.id}
