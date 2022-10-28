@@ -1,29 +1,33 @@
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from '../styles/Gallery.module.css';
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-
-const images = [
-    "https://picsum.photos/2007/2070",
-    "https://picsum.photos/2004/2060",
-    "https://picsum.photos/2009/3050",
-    "https://picsum.photos/2004/4040",
-    "https://picsum.photos/2003/3020",
-    "https://picsum.photos/2050/2011",
-    "https://picsum.photos/3030/1001",
-]
+import axios from 'axios';
 
 export default function Gallery() {
-    return (
+    
+    const [photos, setPhotos] = useState([])
+
+    useEffect(() => {
+      const url = "https://api.unsplash.com"
+      const key = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
+  
+      axios.get(`${url}/photos/random?client_id=${key}&count=5`)
+      .then(res => setPhotos([...photos, ...res.data]))
+    },[])
+  
+    return (  
         <div className={styles.gallery}>
             <ResponsiveMasonry
             columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
             >
             <Masonry gutter="30px">
-                {images.map((image, i) => (
+                {photos.map((photo) => (
                     <img
-                        key={i}
-                        src={image}
-                        style={{width: "100%", display: "block"}}
-                        alt=""
+                        className={styles.image}
+                        src={photo.urls.full}
+                        key={photo.id}
+                        alt="photo goes here"
                     />
                 ))}
             </Masonry>
