@@ -19,7 +19,7 @@ export default function Gallery() {
         const url = "https://api.unsplash.com"
         const key = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
     
-        axios.get(`${url}/photos/random?client_id=C9GkHz3Ik9z_gMNzF8KmXt6HZDOQZZau-KPkdGN0P_w&count=30`)
+        axios.get(`${url}/photos/random?client_id=${key}&count=30`)
         .then(res => setPhotos([...photos, ...res.data]))
     }
   
